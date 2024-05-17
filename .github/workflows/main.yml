@@ -34,6 +34,8 @@ jobs:
       image: hacklab/alpine-3.14.2-zip:1.1.0
     env:
       THEME_NAME: base-theme-slug
+    needs: build_assets
+
     steps:
       - uses: actions/checkout@v2
       - name: Create deploy zips directory
@@ -55,6 +57,8 @@ jobs:
       image: hacklab/alpine-3.14.2-zip:1.1.0
     env:
       THEME_NAME: base-theme-slug
+    needs: build_assets
+
     steps:
       - uses: actions/checkout@v2
       - name: Create deploy zips directory
