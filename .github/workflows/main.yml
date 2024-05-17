@@ -23,7 +23,7 @@ jobs:
       - name: Install npm packages
         run: npm --prefix themes/${{ env.THEME_NAME }}/ install
       - name: Run production build
-        run: npm --prefix themes/${{ env.THEME_NAME }}/ run production
+        run: npm --prefix themes/${{ env.THEME_NAME }}/ run production-github
       - name: Remove node_modules directory
         run: rm -rf themes/${{ env.THEME_NAME }}/node_modules
 
