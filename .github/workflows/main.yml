@@ -19,7 +19,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Remove dist directory
-        run: rm -rf themes/${{ env.THEME_NAME }}/dist
+        run: rm -rf themes/${{ env.THEME_NAME }}/dist 
+      - name: Remove lock
+        run: rm -rf themes/${{ env.THEME_NAME }}/package-lock.json
+      - name: Remove node_modules
+        run: rm -rf themes/${{ env.THEME_NAME }}/node_modules
       - name: Install npm packages
         run: npm --prefix themes/${{ env.THEME_NAME }}/ install
       - name: Run production build
