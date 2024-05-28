@@ -45,12 +45,12 @@ jobs:
       - name: Zip theme
         run: |
           cd themes/
-          zip -r /deploy-zips/${{ env.THEME_NAME }}.zip ${{ env.THEME_NAME }}
+          cp -ra ${{ env.THEME_NAME }} /deploy-zips/${{ env.THEME_NAME }}
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: ${{ env.THEME_NAME }}-develop
-          path: /deploy-zips/${{ env.THEME_NAME }}.zip
+          path: /deploy-zips/${{ env.THEME_NAME }}
 
   create_pack_production:
     runs-on: ubuntu-latest
