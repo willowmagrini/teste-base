@@ -76,7 +76,7 @@ jobs:
 
   create_release:
     runs-on: ubuntu-latest
-    needs: [create_pack_develop, create_pack_production]
+    needs: [create_pack_develop]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
