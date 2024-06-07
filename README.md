@@ -1,5 +1,5 @@
 # base-theme-name
-
+Teste
 Este repositório contém os arquivos iniciais para se ter um projeto WordPress
 nos moldes do Hacklab. Isso significa que as ferramentas de desenvolvimento
 e deploy estão protegidas por um padrão.
@@ -74,7 +74,7 @@ Se você tem um dump de banco de dados `.sql` ou `.sql.gz`, para importá-lo em 
 
 ```
 docker-compose down -v # o parametro -v apaga os dados do mariadb
-docker-compose up 
+docker-compose up
 ```
 
 ## Substituir strings e renomear arquivos/pastas:
@@ -90,7 +90,7 @@ docker-compose up
 https://hub.docker.com/_/wordpress
 
 Exemplo: desativando o debug do wordpress
-    
+
     WORDPRESS_DEBUG: 0
 
 ## Configurações PHP
@@ -108,7 +108,7 @@ Para iniciar o ambiente de debug, rode o script `./dev-scripts/dev.sh`
 
 Adicione `<?php eval(\psy\sh()); ?>` na linha onde deseja debugar. No terminal, o código será interrompido exatamente no lugar onde adicionou o comando e você terá às variavés declaradas, classes instanciadas, funções disponíveis e etc.
 
-**Exemplo:** 
+**Exemplo:**
 Ao adicionar `eval(\psy\sh());` dentro do loop você pode chamar a função get_the_title() no terminal.
 
 ### Adicione um snippet no VSCode para facilitar:
@@ -138,4 +138,3 @@ O conteúdo de `wp-content` está excluído do versionamento por padrão. Para a
 # Traduções
 
 Quando utilizar o comando `wp i18n make-json languages/` para gerar as traduções de arquivos .js e as traduções não funcionarem, uma das possíveis soluções pode ser renomear o arquivo gerado de {locale}-{hash}.json para {domain}-{locale}-{script-handle}.json
-
