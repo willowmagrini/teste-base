@@ -76,7 +76,7 @@ jobs:
 
   create_release:
     runs-on: ubuntu-latest
-    needs: [create_pack_develop]
+    needs: [create_pack_develop, create_pack_production]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -115,7 +115,7 @@ jobs:
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./base-theme-slug-develop.zip
+          asset_path: ./base-theme-slug-develop/${{ env.THEME_NAME }}.zip
           asset_name: base-theme-slug-develop.zip
           asset_content_type: application/zip
       - name: Upload Release Asset (production)
@@ -123,6 +123,6 @@ jobs:
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./base-theme-slug-production.zip
+          asset_path: ./base-theme-slug-production/${{ env.THEME_NAME }}.zip
           asset_name: base-theme-slug-production.zip
           asset_content_type: application/zip
