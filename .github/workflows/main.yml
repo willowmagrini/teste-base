@@ -85,7 +85,7 @@ jobs:
   #         name: base-theme-slug
   #         path: /deploy-zips/base-theme-slug
 
-  create_release
+  create_release:
     runs-on: ubuntu-latest
     needs: [build_assets]
     steps:
