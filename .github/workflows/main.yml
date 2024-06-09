@@ -44,7 +44,7 @@ jobs:
         run: mkdir -p /deploy-zips/
       - name: Zip theme
         run: |
-          themes/
+          cd themes/
           cp -ra base-theme-slug /deploy-zips/base-theme-slug
       - name: Upload artifact
         uses: actions/upload-artifact@v3
