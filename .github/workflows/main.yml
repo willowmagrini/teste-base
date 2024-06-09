@@ -14,34 +14,34 @@ jobs:
     container:
       image: node:20
     env:
-      THEME_NAME: base-theme-slug
+      THEME_NAME: hacklab-theme
     steps:
       - uses: actions/checkout@v2
       - name: Remove dist directory
-        run: rm -rf themes/base-theme-slug/dist
+        run: rm -rf themes/hacklab-theme/dist
       - name: Remove lock
-        run: rm -rf themes/base-theme-slug/package-lock.json
+        run: rm -rf themes/hacklab-theme/package-lock.json
       - name: Remove node_modules
-        run: rm -rf themes/base-theme-slug/node_modules
+        run: rm -rf themes/hacklab-theme/node_modules
       - name: Install npm packages
-        run: npm --prefix themes/base-theme-slug/ install
+        run: npm --prefix themes/hacklab-theme/ install
       - name: Run production build
-        run: npm --prefix themes/base-theme-slug/ run production
+        run: npm --prefix themes/hacklab-theme/ run production
       - name: Remove node_modules directory
-        run: rm -rf themes/base-theme-slug/node_modules
+        run: rm -rf themes/hacklab-theme/node_modules
       - uses: actions/checkout@v2
       - name: Create deploy zips directory
         run: mkdir -p /deploy-zips/
       - name: copy theme
         run: |
           cd themes/
-          cp -ra base-theme-slug /deploy-zips/base-theme-slug
+          cp -ra hacklab-theme /deploy-zips/hacklab-theme
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: base-theme-slug
-          path: /deploy-zips/base-theme-slug  #
-  
+          name: hacklab-theme
+          path: /deploy-zips/hacklab-theme  #
+
   create_release:
     runs-on: ubuntu-latest
     needs: [build_assets]
@@ -59,12 +59,12 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
-          name: base-theme-slug
-          path: ./base-theme-slug/
+          name: hacklab-theme
+          path: ./hacklab-theme/
       - name: Zip artifact
         run: |
-          cd ./base-theme-slug
-          zip -r base-theme-slug.zip .
+          cd ./hacklab-theme
+          zip -r hacklab-theme.zip .
       - name: Create GitHub Release
         id: create_release_develop
         uses: actions/create-release@v1
@@ -81,6 +81,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release_develop.outputs.upload_url }}
-          asset_path: ./base-theme-slug/base-theme-slug.zip
-          asset_name: base-theme-slug.zip
+          asset_path: ./hacklab-theme/hacklab-theme.zip
+          asset_name: hacklab-theme.zip
           asset_content_type: application/zip
