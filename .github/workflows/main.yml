@@ -31,19 +31,11 @@ jobs:
         run:   ls -lhtra themes/hacklab-theme
       - name: Remove node_modules directory
         run: rm -rf themes/hacklab-theme/node_modules
-      - uses: actions/checkout@v2
-      - name: Create deploy zips directory
-        run: mkdir -p /deploy-zips/
-      - name: copy theme
-        run: |
-          cd themes/
-          cp -ra hacklab-theme /deploy-zips/hacklab-theme
-          ls -lhtra /deploy-zips/hacklab-theme/
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: hacklab-theme
-          path: /deploy-zips/hacklab-theme  #
+          path: themes/hacklab-theme
 
   create_release:
     runs-on: ubuntu-latest
