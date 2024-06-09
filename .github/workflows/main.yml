@@ -91,7 +91,11 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: base-theme-slug-artifact
-          path: ./base-theme-slug/base-theme-slug.zip
+          path: ./base-theme-slug
+      - name: Zip artifact
+        run: |
+          cd ./c
+          zip -r base-theme-slug.zip .
       - name: Create GitHub Release
         id: create_release
         uses: actions/create-release@v1
