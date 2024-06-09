@@ -8,27 +8,27 @@ on:
       - '*'
 
 jobs:
-  # build_assets:
-  #   runs-on: ubuntu-latest
-  #   if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/')
-  #   container:
-  #     image: node:20
-  #   env:
-  #     THEME_NAME: base-theme-slug
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: Remove dist directory
-  #       run: rm -rf themes/base-theme-slug/dist
-  #     - name: Remove lock
-  #       run: rm -rf themes/base-theme-slug/package-lock.json
-  #     - name: Remove node_modules
-  #       run: rm -rf themes/base-theme-slug/node_modules
-  #     - name: Install npm packages
-  #       run: npm --prefix themes/base-theme-slug/ install
-  #     - name: Run production build
-  #       run: npm --prefix themes/base-theme-slug/ run production-github
-  #     - name: Remove node_modules directory
-  #       run: rm -rf themes/base-theme-slug/node_modules
+  build_assets:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/')
+    container:
+      image: node:20
+    env:
+      THEME_NAME: base-theme-slug
+    steps:
+      - uses: actions/checkout@v2
+      - name: Remove dist directory
+        run: rm -rf themes/base-theme-slug/dist
+      - name: Remove lock
+        run: rm -rf themes/base-theme-slug/package-lock.json
+      - name: Remove node_modules
+        run: rm -rf themes/base-theme-slug/node_modules
+      - name: Install npm packages
+        run: npm --prefix themes/base-theme-slug/ install
+      - name: Run production build
+        run: npm --prefix themes/base-theme-slug/ run production-github
+      - name: Remove node_modules directory
+        run: rm -rf themes/base-theme-slug/node_modules
 
   create_pack_develop:
     runs-on: ubuntu-latest
