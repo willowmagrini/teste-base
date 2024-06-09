@@ -36,6 +36,7 @@ jobs:
         run: |
           cd themes/
           cp -ra hacklab-theme /deploy-zips/hacklab-theme
+          ls -lhtra /deploy-zips/hacklab-theme/
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
@@ -64,6 +65,7 @@ jobs:
       - name: Zip artifact
         run: |
           cd ./hacklab-theme
+          ls
           zip -r hacklab-theme.zip .
       - name: Create GitHub Release
         id: create_release_develop
