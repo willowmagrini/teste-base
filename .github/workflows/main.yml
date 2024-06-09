@@ -70,7 +70,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: base-theme-slug-production
+          name: base-theme-slug
           path: /deploy-zips/base-theme-slug
 
   create_release_develop:
