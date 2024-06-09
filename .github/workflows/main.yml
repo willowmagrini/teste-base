@@ -27,7 +27,7 @@ jobs:
         run: npm --prefix themes/hacklab-theme/ install
       - name: Run production build
         run: npm --prefix themes/hacklab-theme/ run production
-      -name: check files
+      - name: check files
         run:   ls -lhtra themes/hacklab-theme
       - name: Remove node_modules directory
         run: rm -rf themes/hacklab-theme/node_modules
