@@ -74,7 +74,7 @@ jobs:
           name: ${{ env.THEME_NAME }}-production
           path: /deploy-zips/${{ env.THEME_NAME }}.zip
 
-   create_release:
+  create_release:
     runs-on: ubuntu-latest
     needs: [create_pack_develop]
     steps:
