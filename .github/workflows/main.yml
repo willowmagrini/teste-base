@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Remove dist directory
-        run: rm -rf themes/hacklab-theme/dist
+        run: rm -rf themes/hacklab-theme/dist/*
       - name: Remove lock
         run: rm -rf themes/hacklab-theme/package-lock.json
       - name: Remove node_modules
@@ -27,6 +27,8 @@ jobs:
         run: npm --prefix themes/hacklab-theme/ install
       - name: Run production build
         run: npm --prefix themes/hacklab-theme/ run production
+      -name: check files
+        run:   ls -lhtra themes/hacklab-theme
       - name: Remove node_modules directory
         run: rm -rf themes/hacklab-theme/node_modules
       - uses: actions/checkout@v2
