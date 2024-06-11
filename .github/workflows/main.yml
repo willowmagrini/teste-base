@@ -46,9 +46,7 @@ jobs:
       - name: Set Release Tag
         id: get_tag
         run: |
-          if [[ $GITHUB_REF == refs/heads/main ]]; then
-            echo "tag=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
-          elif [[ $GITHUB_REF == refs/tags/* ]]; then
+          if [[ $GITHUB_REF == refs/tags/* ]]; then
             echo "tag=${GITHUB_REF##*/}" >> $GITHUB_ENV
           fi
       - name: Download artifact
