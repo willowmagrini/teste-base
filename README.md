@@ -61,7 +61,7 @@ git pull temaBase develop
 
 ### Compilando os assets do tema
 
-Abra um terminal, vá até a a pasta `themes/hacklab-theme/` e execute os comandos abaixo:
+Abra um terminal, vá até a a pasta `themes/teste-base/` e execute os comandos abaixo:
 
 ```bash
 npm install
