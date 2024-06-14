@@ -1,0 +1,39 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block/json",
+    "apiVersion": 3,
+    "name": "teste-base/card-header",
+    "title": "Card header",
+    "description": "The header of a generic card",
+    "category": "text",
+    "icon": "block-default",
+    "parent": ["teste-base/card"],
+    "supports": {
+        "color": {
+            "background": true,
+            "text": true
+        },
+        "html": false
+    },
+    "attributes": {
+        "backgroundImage": {
+            "type": "object",
+            "default": {
+                "alt": "",
+                "height": 0,
+                "url": "",
+                "width": 0
+            }
+        },
+        "style": {
+            "type": "object",
+            "default": {
+                "color": {
+                    "background": "var(--wp--preset--color--high-dark)",
+                    "text": "var(--wp--preset--color--low-pure)"
+                }
+            }
+        }
+    },
+    "textdomain": "teste-base",
+    "editorScript": ["file:../../../dist/blocks/card-header/editor.js"]
+}

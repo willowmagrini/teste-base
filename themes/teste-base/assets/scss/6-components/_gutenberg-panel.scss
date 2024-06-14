@@ -1,0 +1,23 @@
+.wp-admin #editor {
+    // Value extracted from Gutenberg stylesheets
+    $font-family--gutenberg: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+
+    .interface-navigable-region  {
+        font-family: $font-family--gutenberg;
+    }
+}
+
+.teste-base-gutenberg-panel {
+
+    &__panel-body {
+        width: 100%;
+
+        .components-panel__row:empty {
+            display: none;
+        }
+
+        .components-base-control, .components-form-token-field {
+            width: 100%;
+        }
+    }
+}

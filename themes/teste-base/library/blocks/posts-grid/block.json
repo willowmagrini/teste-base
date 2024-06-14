@@ -1,0 +1,99 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block/json",
+    "apiVersion": 3,
+    "name": "teste-base/posts-grid",
+    "title": "Posts grid",
+    "description": "Display post cards on a grid",
+    "category": "text",
+    "icon": "grid-view",
+    "supports": {
+        "align": ["center", "wide", "full"],
+        "html": false
+    },
+    "attributes": {
+        "cardModel": {
+            "type": "string",
+            "default": ""
+        },
+        "cardModifiers": {
+            "type": "array",
+            "default": []
+        },
+        "compare": {
+            "type": "string",
+            "default": "OR"
+        },
+        "gridGap": {
+            "type": "string",
+            "default": "medium"
+        },
+        "hideAuthor": {
+            "type": "boolean",
+            "default": false
+        },
+        "hideCategories": {
+            "type": "boolean",
+            "default": false
+        },
+        "hideDate": {
+            "type": "boolean",
+            "default": false
+        },
+        "hideExcerpt": {
+            "type": "boolean",
+            "default": false
+        },
+        "noCompare": {
+            "type": "string",
+            "default": "OR"
+        },
+        "noPostType": {
+            "type": "string",
+            "default": ""
+        },
+        "noQueryTerms": {
+            "type": "array",
+            "default": []
+        },
+        "noTaxonomy": {
+            "type": "string",
+            "default": ""
+        },
+        "order": {
+            "type": "string",
+            "default": "desc"
+        },
+        "orderBy": {
+            "type": "string",
+            "default": "date"
+        },
+        "postType": {
+            "type": "string",
+            "default": "post"
+        },
+        "postsPerColumn": {
+            "type": "number",
+            "default": 1
+        },
+        "postsPerRow": {
+            "type": "number",
+            "default": 1
+        },
+        "queryTerms": {
+            "type": "array",
+            "default": []
+        },
+        "showChildren": {
+            "type": "boolean",
+            "default": false
+        },
+        "taxonomy": {
+            "type": "string",
+            "default": ""
+        }
+    },
+    "textdomain": "teste-base",
+    "editorScript": ["file:../../../dist/blocks/posts-grid/editor.js"],
+    "editorStyle": ["file:../../../dist/blocks/posts-grid/editor.css"],
+    "style": ["file:../../../dist/blocks/posts-grid/style.css"]
+}
