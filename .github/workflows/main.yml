@@ -79,4 +79,4 @@ jobs:
           asset_content_type: application/zip
       - name: Execute CURL after release
         run: |
-          curl "${{ env.CURL_URL }}wp-json/git-updater/v1/update/?key=${{ secrets.GIT_UPDATER_KEY }}&theme=${{ env.THEME_NAME }}&committish=${{ env.tag }}"
+          curl "${{ env.CURL_URL }}wp-json/git-updater/v1/update/?key=${{ secrets.GIT_UPDATER_KEY }}&theme=${{ env.THEME_NAME }}&committish=main"
