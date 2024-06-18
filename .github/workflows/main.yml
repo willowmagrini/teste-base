@@ -27,8 +27,8 @@ jobs:
         run: npm --prefix themes/${{ env.THEME_NAME }}/ install
       - name: Run production build
         run: npm --prefix themes/${{ env.THEME_NAME }}/ run production
-      - name: check files
-        run:   ls -lhtra themes/${{ env.THEME_NAME }}
+      - name: Check files
+        run: ls -lhtra themes/${{ env.THEME_NAME }}
       - name: Remove node_modules directory
         run: rm -rf themes/${{ env.THEME_NAME }}/node_modules
       - name: Upload artifact
@@ -56,8 +56,7 @@ jobs:
           name: ${{ env.THEME_NAME }}
           path: ./${{ env.THEME_NAME }}/
       - name: Zip artifact
-        run: |
-          zip -r ${{ env.THEME_NAME }}.zip ./${{ env.THEME_NAME }}
+        run: zip -r ${{ env.THEME_NAME }}.zip ./${{ env.THEME_NAME }}
       - name: Create GitHub Release
         id: create_release_develop
         uses: actions/create-release@v1
@@ -77,6 +76,36 @@ jobs:
           asset_path: ./${{ env.THEME_NAME }}.zip
           asset_name: ${{ env.THEME_NAME }}-${{ env.tag }}.zip
           asset_content_type: application/zip
+      - name: Wait for asset to be available
+        id: check_asset_availability
+        run: |
+          ASSET_NAME="${{ env.THEME_NAME }}-${{ env.tag }}.zip"
+          REPO="https://api.github.com/repos/${{ github.repository }}/releases/tags/${{ env.tag }}"
+          ATTEMPTS=0
+          MAX_ATTEMPTS=3
+          SUCCESS=false
+
+          while [ $ATTEMPTS -lt $MAX_ATTEMPTS ]; do
+            echo "Checking for asset availability, attempt $((ATTEMPTS+1))..."
+            ASSET_ID=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" $REPO | jq -r ".assets[] | select(.name==\"$ASSET_NAME\") | .id")
+            if [ -n "$ASSET_ID" ]; then
+              echo "Asset found. Asset ID: $ASSET_ID"
+              SUCCESS=true
+              break
+            else
+              echo "Asset not found. Retrying in 30 seconds..."
+              ATTEMPTS=$((ATTEMPTS+1))
+              sleep 30
+            fi
+          done
+
+          if [ "$SUCCESS" = false ]; then
+            echo "Failed to find asset after $MAX_ATTEMPTS attempts."
+            exit 1
+          fi
+        continue-on-error: false
+
       - name: Execute CURL after release
+        if: steps.check_asset_availability.outputs.SUCCESS == 'true'
         run: |
           curl "${{ env.CURL_URL }}wp-json/git-updater/v1/update/?key=${{ secrets.GIT_UPDATER_KEY }}&theme=${{ env.THEME_NAME }}&branch=main"
