@@ -8,7 +8,7 @@ on:
       - '*'
 env:
   THEME_NAME: site-base
-  CURL_URL: https://your-api-endpoint.com/endpoint 
+  CURL_URL: https://helmtestec1.hacklab.com.br/
 jobs:
   build_assets:
     runs-on: ubuntu-latest
@@ -79,6 +79,4 @@ jobs:
           asset_content_type: application/zip
       - name: Execute CURL after release
         run: |
-          curl -X POST -H "Content-Type: application/json" \
-          -d '{"key":"value"}' \
-          $CURL_URL
+          curl "${{ env.CURL_URL }}wp-json/git-updater/v1/update/?key=${{ secrets.GIT_UPDATER_KEY }}&theme=${{ env.THEME_NAME }}"
