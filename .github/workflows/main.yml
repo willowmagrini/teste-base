@@ -57,8 +57,6 @@ jobs:
           path: ./site-base/
       - name: Zip artifact
         run: |
-          cd ./site-base
-          ls
           zip -r site-base.zip ./site-base
       - name: Create GitHub Release
         id: create_release_develop
