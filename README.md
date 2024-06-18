@@ -61,7 +61,7 @@ git pull temaBase develop
 
 ### Compilando os assets do tema
 
-Abra um terminal, vá até a a pasta `themes/hacklab-theme/` e execute os comandos abaixo:
+Abra um terminal, vá até a a pasta `themes/site-base/` e execute os comandos abaixo:
 
 ```bash
 npm install
@@ -166,3 +166,5 @@ O conteúdo de `wp-content` está excluído do versionamento por padrão. Para a
 ## Traduções
 
 Quando utilizar o comando `wp i18n make-json languages/` para gerar as traduções de arquivos `.js` e as traduções não funcionarem, uma das possíveis soluções pode ser renomear o arquivo gerado de `{locale}-{hash}.json` para `{domain}-{locale}-{script-handle}.json`.
+
+O nome da pasta precisa ser o mesmo nome adicionado no plugin git-updater.

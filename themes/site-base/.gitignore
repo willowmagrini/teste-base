@@ -1,4 +1,4 @@
 node_modules
 plugins/*
 zips/*
-themes/hacklab-theme/node_modules
+themes/site-base/node_modules
