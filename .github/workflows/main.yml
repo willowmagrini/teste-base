@@ -106,6 +106,5 @@ jobs:
         continue-on-error: false
 
       - name: Execute CURL after release
-        if: steps.check_asset_availability.outputs.SUCCESS == 'true'
         run: |
           curl "${{ env.CURL_URL }}wp-json/git-updater/v1/update/?key=${{ secrets.GIT_UPDATER_KEY }}&theme=${{ env.THEME_NAME }}&branch=main"
