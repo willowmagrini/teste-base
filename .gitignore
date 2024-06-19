@@ -12,4 +12,4 @@ wp-content/languages/*
 mariadb_data/
 mix-manifest.json
 wp-root
-themes/site-base/mix-manifest.json
+themes/teste-base/mix-manifest.json

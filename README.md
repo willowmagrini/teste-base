@@ -61,7 +61,7 @@ git pull temaBase develop
 
 ### Compilando os assets do tema
 
-Abra um terminal, vá até a a pasta `themes/site-base/` e execute os comandos abaixo:
+Abra um terminal, vá até a a pasta `themes/teste-base/` e execute os comandos abaixo:
 
 ```bash
 npm install
@@ -167,4 +167,8 @@ O conteúdo de `wp-content` está excluído do versionamento por padrão. Para a
 
 Quando utilizar o comando `wp i18n make-json languages/` para gerar as traduções de arquivos `.js` e as traduções não funcionarem, uma das possíveis soluções pode ser renomear o arquivo gerado de `{locale}-{hash}.json` para `{domain}-{locale}-{script-handle}.json`.
 
-O nome da pasta precisa ser o mesmo nome adicionado no plugin git-updater.
+O nome da pasta precisa ser o mesmo nome adicionado no plugin git-updater e o mesmo nome do repositorio
+para aparecer a atualização precisa ter a alteração da versão no style
+precisou limpar o cache do plugin para parecer a atualização
+precisa ter o link do style.css na raíz do repo para o style que esta na pasta do tema
+configurar sempre o segredo: secrets.GIT_UPDATER_KEY no repositorio

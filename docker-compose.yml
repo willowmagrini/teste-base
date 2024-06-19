@@ -18,7 +18,8 @@ services:
       WORDPRESS_DEBUG: 1
     volumes:
       - ./wp-root:/var/www/html/
-      - ./themes/site-base:/var/www/html/wp-content/themes/site-base
+      # - ./themes/teste-base:/var/www/html/wp-content/themes/teste-base
+      - ../git-updater:/var/www/html/wp-content/plugins/git-updater 
       - ./plugins/hacklab-dev-utils:/var/www/html/wp-content/plugins/hacklab-dev-utils
       - ./compose/local/wordpress/htaccess:/var/www/html/.htaccess
       - ./compose/local/wordpress/php/extra.ini:/usr/local/etc/php/conf.d/extra.ini
@@ -28,7 +29,7 @@ services:
       context: .
       dockerfile: ./compose/local/watcher/Dockerfile
     volumes:
-      - ./themes/site-base:/app
+      - ./themes/teste-base:/app
 
   mariadb:
     image: mariadb:10.4
