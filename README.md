@@ -172,3 +172,4 @@ para aparecer a atualização precisa ter a alteração da versão no style
 precisou limpar o cache do plugin para parecer a atualização
 precisa ter o link do style.css na raíz do repo para o style que esta na pasta do tema
 configurar sempre o segredo: secrets.GIT_UPDATER_KEY no repositorio
+alterar o link symbolico
